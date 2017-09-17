@@ -4,94 +4,103 @@
   <meta charset="UTF-8">
   <title>fir.im</title>
   <style>
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    background-color: yellow;
-}
-.plane-wrapper{
-    position: absolute;
-    top: 50%;
-    -webkit-perspective: 2500px;/*视点距离*/
-    -webkit-animation: undulate 8s linear infinite alternate;
-}
-/*alternate进行切换，0%会变成100%，实现由下到上，由上到下效果*/
-@-webkit-keyframes undulate{
-    0%,100%,50%{
-        -webkit-transform: translate3d(0,0,0);
+    * {
+      margin: 0;
+      padding: 0;
     }
-    25%{
-        -webkit-transform: translate3d(-6px,-18px,0);
+
+    body {
+      background-color: yellow;
     }
-    75%{
-        -webkit-transform: translate3d(6px,18px,0);
+
+    .plane-wrapper {
+      position: absolute;
+      top: 50%;
+      -webkit-perspective: 2500px;
+      /*视点距离*/
+      -webkit-animation: undulate 8s linear infinite alternate;
     }
-}
-/*0开始，100结束*/
-.plane-wrapper .rotate-container{
-    position: absolute;
-    top: 51.7003%;   /*该代码段把螺旋桨定位到飞机上*/
-    left: 13.1%;
-    width: 27.42%;
-    height: 14.4474%;
-    -webkit-animation: rotating .2s linear infinite reverse;
-    -webkit-transform-origin: center center;
-}
-.plane-wrapper .propeller{
-  width: 100%;
-  transform: rotateY(-28deg);
-}
-@-webkit-keyframes rotating{
-    0%{
+    /*alternate进行切换，0%会变成100%，实现由下到上，由上到下效果*/
+
+    @-webkit-keyframes undulate {
+      0%,
+      100%,
+      50% {
+        -webkit-transform: translate3d(0, 0, 0);
+      }
+      25% {
+        -webkit-transform: translate3d(-6px, -18px, 0);
+      }
+      75% {
+        -webkit-transform: translate3d(6px, 18px, 0);
+      }
+    }
+    /*0开始，100结束*/
+
+    .plane-wrapper .rotate-container {
+      position: absolute;
+      top: 51.7003%;
+      /*该代码段把螺旋桨定位到飞机上*/
+      left: 13.1%;
+      width: 27.42%;
+      height: 14.4474%;
+      -webkit-animation: rotating .2s linear infinite reverse;
+      -webkit-transform-origin: center center;
+    }
+
+    .plane-wrapper .propeller {
+      width: 100%;
+      transform: rotateY(-28deg);
+    }
+
+    @-webkit-keyframes rotating {
+      0% {
         -webkit-transform: rotate(0deg);
-    }
-    100%{
+      }
+      100% {
         -webkit-transform: rotate(360deg);
+      }
     }
-} 
-  .section-1.animate-out .plane-wrapper {
-    -webkit-animation:plane-out 1.3s ease-out forwards;
-    animation:plane-out 1.3s ease-out forwards;   /*forwards 一直运动，一直向前进，去掉试验*/
-  }
-  @-webkit-keyframes plane-out {
-    0% {
-      -webkit-transform: scale(1) translateX(0);
+
+    .section-1.animate-out .plane-wrapper {
+      -webkit-animation: plane-out 1.3s ease-out forwards;
+      animation: plane-out 1.3s ease-out forwards;
+      /*forwards 一直运动，一直向前进，去掉试验*/
     }
-    30% {
-      -webkit-transform:scale(.8) translateX(160px);
+
+    @-webkit-keyframes plane-out {
+      0% {
+        -webkit-transform: scale(1) translateX(0);
+      }
+      30% {
+        -webkit-transform: scale(.8) translateX(160px);
+      }
+      100% {
+        -webkit-transform: scale(1.2) translateX(-2000px);
+      }
     }
-    100% {
-      -webkit-transform: scale(1.2) translateX(-2000px);
-    }
-  }
   </style>
 </head>
 <body>
   <div class="section section-1 ready">
     <div class="plane-wrapper" style="left:315.5px">
-      <img src="http://fir.im/images/plane.svg"
-      alt="" class="plane">
-
+      <img src="http://fir.im/images/plane.svg" alt="" class="plane">
       <div class="rotate-container">
-        <img src="http://fir.im/images/propeller.svg"
-        alt="" class="propeller">
+        <img src="http://fir.im/images/propeller.svg" alt="" class="propeller">
       </div>
     </div>
   </div>
- <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
- <script>
-/*srcitp有阻塞，所以放在尾部
-jueqy $函数   可以替换document.querySelectorAll 查找元素的函数
-事件编程
-.on document 相当于addEventListener*/
-$(document).on('scroll',function(){
-/*  css  动画，定义一个运动类   js   动态添加上去。
-相当于.classList.add*/
-$('.section').addClass('animate-out');
-})
- </script>
-
+  <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+  <script>
+    /*srcitp有阻塞，所以放在尾部
+    jueqy $函数   可以替换document.querySelectorAll 查找元素的函数
+    事件编程
+      .on document 相当于addEventListener*/
+    $(document).on('scroll', function () {
+      /*  css  动画，定义一个运动类   js   动态添加上去。
+      相当于.classList.add*/
+      $('.section').addClass('animate-out');
+    })
+  </script>
 </body>
 </html>
